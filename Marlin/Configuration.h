@@ -71,7 +71,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(VTSTech, MKS_GEN_L_V2 Anet A8 Config R13)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(VTSTech, MKS_GEN_L_V2 Anet A8 Config R14)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -504,9 +504,15 @@
   //#define DEFAULT_Kd 440
 
   // 24V PSU
-  #define DEFAULT_Kp 17.20
-  #define DEFAULT_Ki 1.06
-  #define DEFAULT_Kd 69.58
+  //#define DEFAULT_Kp 17.20
+  //#define DEFAULT_Ki 1.06
+  //#define DEFAULT_Kd 69.58
+
+  // ANET A8 Standard Extruder at 210 Degree Celsius and 100% Fan
+  //(measured after M106 S255 with M303 E0 S210 C8)
+  #define DEFAULT_Kp 21.0
+  #define DEFAULT_Ki 1.25
+  #define DEFAULT_Kd 86.0
 
 #endif // PIDTEMP
 
@@ -545,9 +551,9 @@
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 10.00
-  #define DEFAULT_bedKi .023
-  #define DEFAULT_bedKd 305.4
+  //#define DEFAULT_bedKp 10.00
+  //#define DEFAULT_bedKi .023
+  //#define DEFAULT_bedKd 305.4
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from pidautotune
@@ -555,6 +561,12 @@
   //#define DEFAULT_bedKi 1.41
   //#define DEFAULT_bedKd 1675.16
 
+  // ANET A8
+  // original Bed + 0.3mm Heat conducting into 4mm borosilicate (PID-Autotune: M303 E-1 S60 C5):
+  #define DEFAULT_bedKp 295.00
+  #define DEFAULT_bedKi 35.65
+  #define DEFAULT_bedKd 610.21  
+  
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
 
@@ -1496,12 +1508,12 @@
 #define PREHEAT_1_LABEL       "PLA"
 #define PREHEAT_1_TEMP_HOTEND 180
 #define PREHEAT_1_TEMP_BED     70
-#define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
+#define PREHEAT_1_FAN_SPEED    50 // Value from 0 to 255
 
 #define PREHEAT_2_LABEL       "ABS"
 #define PREHEAT_2_TEMP_HOTEND 240
 #define PREHEAT_2_TEMP_BED    110
-#define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
+#define PREHEAT_2_FAN_SPEED    50 // Value from 0 to 255
 
 /**
  * Nozzle Park
